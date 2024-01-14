@@ -1,13 +1,13 @@
-def sum_(a: int, b: int) -> str:
-    return str(a + b)
+def average(numbers: list | tuple) -> int | float:
+    """
+    Среднее ариф
+    :param numbers: список чисел
+    :return: число
+    """
+
+    ans = sum(numbers) / len(numbers)
+
+    return ans
 
 
-l = []
-for num in range(2, 50):
-    if num % 2 == 0:
-        l.append(num)
-
-print(l)
-
-chet = [num for num in range(2, 50) if num % 2 == 0]
-print(chet)
+print(average([1, 2, 3, 4, 5]))
