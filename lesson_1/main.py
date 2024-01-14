@@ -1,7 +1,13 @@
-def ploshad(width, height):
-    return width * height
+def sum_(a: int, b: int) -> str:
+    return str(a + b)
 
 
-print(ploshad(10, 5), ploshad(5, 5))
+l = []
+for num in range(2, 50):
+    if num % 2 == 0:
+        l.append(num)
 
-print(ploshad(6, 8))
+print(l)
+
+chet = [num for num in range(2, 50) if num % 2 == 0]
+print(chet)
