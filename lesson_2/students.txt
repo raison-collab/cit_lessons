@@ -1,0 +1,9 @@
+daniil\n
+danil\n
+arsenii\n
+
+"daniil\ndanil\narsenii"
+
+daniil\n
+
+["daniil\n", "danil\n", "arsenii\n"]

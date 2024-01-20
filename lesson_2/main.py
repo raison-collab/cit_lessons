@@ -1,22 +1,14 @@
-import sys
-
-from PyQt6.QtWidgets import QApplication, QMainWindow
-
-from utils.check_fields import check_fields
-
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-
 def main():
-    app = QApplication(sys.argv)
 
-    main_w = MainWindow()
-    main_w.show()
+    with open('students.txt', mode='r') as f:
+        read_ = f.read()
+        read_line_ = f.readline()
+        read_lines_ = f.readlines()
 
-    sys.exit(app.exec())
+    print('read', read_)
+    print(read_line_)
+    print(read_lines_)
 
+# csv json
 
 main()
