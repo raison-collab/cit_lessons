@@ -1,18 +1,22 @@
+import sys
+
+from PyQt6.QtWidgets import QApplication, QMainWindow
+
 from utils.check_fields import check_fields
 
 
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
 
 def main():
-    login = input('Login - ')
-    password = input('Password - ')
+    app = QApplication(sys.argv)
 
-    check_fields_ = check_fields(login, password)
+    main_w = MainWindow()
+    main_w.show()
 
-    if check_fields_:
-        print('Все ок')
-        return
-
-    print('Проверка не прошла')
+    sys.exit(app.exec())
 
 
 main()
