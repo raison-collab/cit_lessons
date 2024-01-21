@@ -1,14 +1,15 @@
-import csv
+def reverse_string(text: str) -> str:
+    t = reversed(text)
+    return ''.join(t)
 
 
 def main():
-    with open('data/Book1.csv', encoding='utf8') as file:
-        content = csv.reader(file, delimiter=';')
+    f1 = 'hello'
+    f2 = 'world'
 
-        for row in content:
-            for el in row:
-                print(el)
-
+    print(reverse_string(f1))
+    print(reverse_string(f2))
+    print(reverse_string(f1+f2))
 
 
 main()
