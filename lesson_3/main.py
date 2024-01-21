@@ -1,16 +1,14 @@
-import json
+import csv
 
 
 def main():
-    with open('data/data.json') as file:
-        content: dict = json.loads(file.read())
+    with open('data/Book1.csv', encoding='utf8') as file:
+        content = csv.reader(file, delimiter=';')
 
-    name = content['name']
-    family = content['family']
+        for row in content:
+            for el in row:
+                print(el)
 
-    family_names = [el['name'] for el in family]
-
-    print(family_names)
 
 
 main()
