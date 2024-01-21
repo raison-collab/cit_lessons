@@ -1,23 +1,21 @@
-def even_numbers(numbers: list[int]) -> list[int]:
-    l = []
+def min_max(numbers: list) -> list:
+    if not numbers:
+        return []
 
-    for num in numbers:
-        if num % 2 == 0:
-            l.append(num)
+    l = [min(numbers), max(numbers)]
 
     return l
 
 
 def main():
-    f1 = [1, 2, 3, 4, 54]
-    f2 = [3, 5, 1]
+    f1 = [1, 465, 56, 123445]
+    f2 = [-1231231, 123123, 0, 213123, 34, -40394]
     f3 = []
 
-    print(even_numbers(f1))
-    print(even_numbers(f2))
-    print(even_numbers(f3))
-    print(even_numbers(f1+f2))
-
+    print(min_max(f1))
+    print(min_max(f2))
+    print(min_max(f3))
+    print(min_max(f1+f2))
 
 
 main()
