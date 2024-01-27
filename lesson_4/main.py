@@ -4,41 +4,7 @@
 
 
 def division_sum(numbers: list[int]) -> list[int]:
-    """
-    1) в цикле перебрать числа
-    2) проверить делится ли число на сумму цифр
-    3) если "да" то вставляем в новый список, если "нет" то пропуск
-    4) вернуть
-    """
-    # 3
-    l = []
-
-    # 1
-    for number in numbers:
-        """
-        1) преобр в строку
-        2) созд список из цифр числа
-        3) сум эл-тов списка
-        4) поделить
-        """
-        # 1.1
-        st = str(number)  # '123'
-        # 1.2
-        a = []  # [1, 2, 3]
-
-        # 1.2
-        for i in st:    # '1' ...
-            a.append(int(i))
-
-        # 1.3
-        sum_ = sum(a)
-
-        # 3
-        if number % sum_ == 0:
-            l.append(number)
-
-    # 4
-    return l
+    return [n for n in numbers if n % sum([int(i) for i in str(n)]) == 0]
 
 
 print(division_sum([21, 13]))  # [21]
