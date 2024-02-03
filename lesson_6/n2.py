@@ -1,16 +1,28 @@
 """
-A 0
-B 1
-C 2
-D 3
-
-1) AAAAA 00000
-2) AAAAB 00001
-
-ADCDB 03231
-BDCDA 13230
+A
+B
+C
+D
 """
-print(int('03231', 4))
-print(int('13230', 4))
 
-print(int(492 - 237))
+n1 = 0
+n2 = 0
+
+k = 0
+
+for a1 in 'ABCD':
+    for a2 in 'ABCD':
+        for a3 in 'ABCD':
+            for a4 in 'ABCD':
+                for a5 in 'ABCD':
+                    word = a1 + a2 + a3 + a4 + a5
+
+                    if word == 'ADCDB':
+                        n1 = k
+
+                    elif word == 'BDCDA':
+                        n2 = k
+
+                    k += 1
+
+print(n2-n1)
