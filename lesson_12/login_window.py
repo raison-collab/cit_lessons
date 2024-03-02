@@ -1,6 +1,8 @@
 from PyQt6.QtWidgets import QLineEdit, QCheckBox
 
-from lesson_10.login_window_ui import Ui_MainWindow
+from config import set_config
+from lesson_11.config import read_config
+from login_window_ui import Ui_MainWindow
 
 import loader
 
@@ -18,7 +20,6 @@ def get_checkboxes(ui: Ui_MainWindow) -> list[QCheckBox]:
     ]
 
 
-
 def login_btn_clicked():
     fields = get_field(loader.login_window_ui)
 
@@ -27,15 +28,28 @@ def login_btn_clicked():
     remember_me = get_checkboxes(loader.login_window_ui)[0]
 
     if login.text() == 'Daniil' and password.text() == '12345':
-        pass
+        if remember_me.isChecked():
+            set_config('config.txt', 'login', login.text())
+            set_config('config.txt', 'password', password.text())
+            print('authed with save')
+        else:
+            print('authed without save')
     else:
-        pass
+        print('not ok')
 
 
-def logic(ui: Ui_MainWindow):
+def is_authed() -> bool:
+    cfg = read_config('config.txt')
+
+    return cfg['login'] != 'None'
+
+
+def logic(ui: Ui_MainWindow) -> bool:
     login_btn = ui.login_btn
 
     login_btn.clicked.connect(login_btn_clicked)
+
+    return is_authed()
 
 
 """
