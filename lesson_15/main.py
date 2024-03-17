@@ -1,22 +1,37 @@
 import pygame
 import time
 
+
+choose = int(input("Выберите персонажа:\n1)шрек (базовый)\n2)осел\n>>>"))
+
 pygame.init()
 
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('2D Plaformer')
 
 # загрузка персонажа и монетки
-character = pygame.image.load('img/personage.png')
+if choose == 1:
+    character = pygame.image.load('img/personage.png')
+elif choose == 2:
+    character = pygame.image.load('img/osel.png')
+else:
+    raise ValueError('Такого персонажа нет')
+
 coin = pygame.image.load('img/coin.png')
 background = pygame.image.load('img/back1.jpg')
 
 # настройка начальных координат
-x = 400
-y = 300
+if choose == 1:
+    x = 400
+    y = 300
+    direction = 'right'
+elif choose == 2:
+    x = 100
+    y = 100
+    direction = 'left'
+
 vx = 0
 vy = 0
-direction = 'right'
 
 # координаты монет
 coins = [(100, 200), (300, 400), (500, 300), (700, 100)]
@@ -41,15 +56,24 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                vx = -5
+                if choose == 1:
+                    vx = -5
+                elif choose == 2:
+                    vx = -20
                 direction = 'left'
 
             if event.key == pygame.K_RIGHT:
-                vx = 5
+                if choose == 1:
+                    vx = 5
+                elif choose == 2:
+                    vx = 20
                 direction = 'right'
 
             if event.key == pygame.K_UP:
-                vy = -10
+                if choose == 1:
+                    vy = -10
+                elif choose == 2:
+                    vy = -5
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
@@ -62,11 +86,21 @@ while running:
 
     # ограничения на выход за границы карты
     if x < 0:
-        x = 0
+        if choose == 1:
+            x = 0
+        elif choose == 2:
+            x = 10
     if x > 800:
-        x = 600
+        if choose == 1:
+            x = 800
+        elif choose == 2:
+            x = 600
     if y < 0:
-        y = 20
+        if choose == 1:
+            y = 200
+        elif choose == 2:
+            y = 550
+    # пол
     if y > 600:
         y = 550
 
@@ -94,8 +128,3 @@ while running:
 
     # обновление экрана
     pygame.display.flip()
-
-    # если монеты кончились, то закрываем игру
-    if len(coins) == 0:
-        running = False
-        time.sleep(200)
