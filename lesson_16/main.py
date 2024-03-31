@@ -22,13 +22,17 @@ class JohnCharacter(Character):
 
 character = Character("Daniil", (120, 400))
 
-character.get_name()
-character.get_coordinates()
+print(character.get_name())
+print(character.get_coordinates())
 
 danil = Character("danil", (50, 70))
 
-danil.get_name()
-danil.get_coordinates()
+print(danil.get_name())
+print(danil.get_coordinates())
 
 
 john_character = JohnCharacter("John", (200, 100), "poison")
+
+print(john_character.get_name())
+print(john_character.get_coordinates())
+print(john_character.get_skill())
